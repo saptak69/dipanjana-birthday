@@ -233,6 +233,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isCandleBlown, setIsCandleBlown] = useState(false);
   const ambientRef = useRef(null);
+  const touchStartX = useRef(null);
 
   const totalPages = STORY_DATA.length + 1;
 
@@ -279,6 +280,27 @@ export default function App() {
     blowAudio.play().catch(() => {});
   };
 
+  // Swipe handling
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e) => {
+    if (!touchStartX.current) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    // Threshold for swipe detection (50 pixels)
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+  };
+
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === 'ArrowRight') handleNext();
@@ -289,7 +311,11 @@ export default function App() {
   }, [currentPage]);
 
   return (
-    <div className="relative w-full h-screen bg-[#120024] text-white overflow-hidden font-sans selection:bg-pink-500/30 touch-none">
+    <div 
+      className="relative w-full h-screen bg-[#120024] text-white overflow-hidden font-sans selection:bg-pink-500/30 touch-none"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;600&display=swap');
