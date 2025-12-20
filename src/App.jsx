@@ -231,10 +231,10 @@ const Cake = ({ isBlown, onBlow }) => {
 
        <div className={`mt-16 text-center transition-all duration-1000 ${isBlown ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-90'}`}>
           <h1 className="font-cursive text-7xl text-transparent bg-clip-text bg-gradient-to-r from-pink-200 via-white to-purple-200 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)] mb-4">
-             Happy Birthday
+              Happy Birthday
           </h1>
           <p className="text-white/60 text-sm tracking-[0.4em] uppercase font-medium">
-             {isBlown ? "Dreams do come true ✨" : "Make a wish, Baby"}
+             {isBlown ? "I love you baby ❤️" : "Make a wish, Baby"}
           </p>
        </div>
 
@@ -276,9 +276,11 @@ export default function App() {
 
     // Function to handle auto-play with user interaction fallback
     const playAudio = () => {
-      ambientRef.current.play().catch((error) => {
-        console.log("Autoplay prevented. Waiting for user interaction...", error);
-      });
+      if (ambientRef.current) {
+        ambientRef.current.play().catch((error) => {
+          console.log("Autoplay prevented. Waiting for user interaction...", error);
+        });
+      }
     };
 
     // Attempt to play immediately
@@ -393,13 +395,13 @@ export default function App() {
 
       {/* Header */}
       <div className="absolute top-0 left-0 w-full p-8 z-50 flex justify-between items-center pointer-events-none">
-         <div>
-            <h1 className="font-cursive text-3xl text-pink-200 drop-shadow-md">Dipanjana</h1>
-            <div className="flex items-center gap-2 mt-1">
-               <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-               <span className="text-[10px] tracking-widest uppercase text-white/50 font-bold">Birthday Edition</span>
-            </div>
-         </div>
+          <div>
+             <h1 className="font-cursive text-3xl text-pink-200 drop-shadow-md">Dipanjana</h1>
+             <div className="flex items-center gap-2 mt-1">
+                <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-[10px] tracking-widest uppercase text-white/50 font-bold">Birthday Edition</span>
+             </div>
+          </div>
       </div>
 
       {/* Main Content */}
@@ -429,28 +431,28 @@ export default function App() {
 
       {/* Bottom Nav */}
       <div className="absolute bottom-0 left-0 w-full p-8 z-50 flex justify-center items-center gap-8 pointer-events-none">
-         <button 
-           onClick={handlePrev}
-           disabled={currentPage === 0}
-           className={`pointer-events-auto p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 transition-all hover:bg-white/20 active:scale-95 ${currentPage === 0 ? 'opacity-20 cursor-not-allowed' : 'opacity-100'}`}
-         >
-            <ChevronLeft className="w-6 h-6" />
-         </button>
+          <button 
+            onClick={handlePrev}
+            disabled={currentPage === 0}
+            className={`pointer-events-auto p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 transition-all hover:bg-white/20 active:scale-95 ${currentPage === 0 ? 'opacity-20 cursor-not-allowed' : 'opacity-100'}`}
+          >
+             <ChevronLeft className="w-6 h-6" />
+          </button>
 
-         <div className="h-1 w-24 bg-white/10 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-pink-500 transition-all duration-500 ease-out shadow-[0_0_10px_#ec4899]"
-              style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
-            ></div>
-         </div>
+          <div className="h-1 w-24 bg-white/10 rounded-full overflow-hidden">
+             <div 
+               className="h-full bg-pink-500 transition-all duration-500 ease-out shadow-[0_0_10px_#ec4899]"
+               style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
+             ></div>
+          </div>
 
-         <button 
-           onClick={handleNext}
-           disabled={currentPage === totalPages - 1}
-           className={`pointer-events-auto p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 transition-all hover:bg-white/20 active:scale-95 ${currentPage === totalPages - 1 ? 'opacity-20 cursor-not-allowed' : 'opacity-100'}`}
-         >
-            <ChevronRight className="w-6 h-6" />
-         </button>
+          <button 
+            onClick={handleNext}
+            disabled={currentPage === totalPages - 1}
+            className={`pointer-events-auto p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 transition-all hover:bg-white/20 active:scale-95 ${currentPage === totalPages - 1 ? 'opacity-20 cursor-not-allowed' : 'opacity-100'}`}
+          >
+             <ChevronRight className="w-6 h-6" />
+          </button>
       </div>
     </div>
   );
