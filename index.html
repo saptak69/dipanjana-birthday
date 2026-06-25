@@ -4,18 +4,53 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy 22nd Birthday Dipanjana!</title>
+    <title>Our Universe | For Dipanjana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            colors: {
+              sage: {
+                50: '#f4f6f4',
+                100: '#e6eae5',
+                200: '#d0d9ce',
+                300: '#b0bfad',
+                400: '#8a9a86',
+                500: '#6f806a',
+                600: '#566452',
+                700: '#465143',
+                800: '#3a4237',
+                900: '#323930',
+                950: '#1a2019',
+              },
+              champagne: {
+                50: '#fbf8f3',
+                100: '#f6efdf',
+                200: '#ebdbbf',
+                300: '#dbc093',
+                400: '#cba36b',
+                500: '#be8c51',
+                600: '#af7845',
+                700: '#926039',
+                800: '#764e32',
+                900: '#60402b',
+                950: '#332014',
+              },
+            },
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+              script: ['Great Vibes', 'cursive'],
+            },
             animation: {
               'float': 'float 20s ease-in-out infinite',
               'flicker': 'flicker 0.1s infinite alternate',
               'smoke-rise': 'smoke-rise 2s forwards',
               'confetti': 'confetti 3s linear forwards',
-              'fade-in-up': 'fadeInUp 1s ease-out'
+              'fade-in-up': 'fadeInUp 1s ease-out',
+              'pulse-glow': 'pulse-glow 3s infinite ease-in-out',
+              'leaf-float': 'leaf-float 10s infinite ease-in-out',
             },
             keyframes: {
               float: {
@@ -37,14 +72,25 @@
               fadeInUp: {
                 '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' }
+              },
+              'pulse-glow': {
+                '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 5px rgba(230, 199, 156, 0.3))' },
+                '50%': { opacity: '0.9', filter: 'drop-shadow(0 0 15px rgba(230, 199, 156, 0.7))' }
+              },
+              'leaf-float': {
+                '0%, 100%': { transform: 'translateY(0) rotate(0deg)', opacity: '0.2' },
+                '50%': { transform: 'translateY(-30px) rotate(15deg)', opacity: '0.6' }
               }
             }
           }
         }
       }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-black">
+  <body class="bg-[#121a15] text-[#ebdbbf] overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
