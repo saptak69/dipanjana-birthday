@@ -635,7 +635,7 @@ export default function App() {
   // Cake extinguish sound
   const handleBlowCandle = () => {
     setIsCandleBlown(true);
-    const blowAudio = new Audio('/blow.mp3');
+    const blowAudio = new Audio(`${import.meta.env.BASE_URL}blow.mp3`);
     blowAudio.play().catch(() => {});
   };
 
@@ -738,7 +738,7 @@ export default function App() {
     const songData = ROMANTIC_SONGS[i - 1];
     mappedPhotos.push({
       id: i,
-      imagePath: `/photos/page${i}.jpg`,
+      imagePath: `${import.meta.env.BASE_URL}photos/page${i}.jpg`,
       text: songData?.text || "A beautiful memory with you.",
       song: songData?.song || "Special Track",
       songUrl: songData?.url || "",
@@ -749,7 +749,7 @@ export default function App() {
     const songData = FRIENDLY_SONGS[i - 1];
     mappedPhotos.push({
       id: i + 22,
-      imagePath: `/photos/page${i + 22}.jpg`,
+      imagePath: `${import.meta.env.BASE_URL}photos/page${i + 22}.jpg`,
       text: songData?.text || "Wonderful celebration memories.",
       song: songData?.song || "Celebration track",
       songUrl: songData?.url || "",
